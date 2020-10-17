@@ -9,10 +9,11 @@ const forecast = (ltd, lng, callback) => {
     } else if (!body.current) {
       callback("Invalid coordinates", undefined);
     } else {
-      const { temperature, feelslike } = body.current;
+      const { temperature, feelslike, weather_descriptions } = body.current;
+      const weaDesStr = weather_descriptions.join(".");
       callback(
         undefined,
-        `It is currently ${temperature} degrees out. It feels like ${feelslike}`
+        `${weaDesStr}. It is currently ${temperature} degrees out. It feels like ${feelslike}`
       );
     }
   });
